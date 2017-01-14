@@ -11,11 +11,13 @@ defmodule LongPolling.Mixfile do
   end
 
   def application do
-    [extra_applications: [:logger],
+    [extra_applications: [:logger, :cowboy],
      mod: {LongPolling.Application, []}]
   end
 
   defp deps do
-    []
+    [
+      {:cowboy, git: "https://github.com/ninenines/cowboy.git", tag: "2.0.0-pre.5"}
+    ]
   end
 end
