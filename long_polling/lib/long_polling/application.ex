@@ -17,7 +17,8 @@ defmodule LongPolling.Application do
   def run do
     routes = [
       {"/", LongPolling.Handler, []},
-      #{"/poll", LongPolling.LpEventHandler, []},
+      {"/data/:room", LongPolling.DataHandler, []},
+      {"/data-update/:room", LongPolling.DataUpdateHandler, []},
       {"/static/[...]", :cowboy_static, {:priv_dir, :long_polling, "static_files"}}
     ]
 
