@@ -1,0 +1,15 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Update Yums
+      shell: yum -y update
+
+    - name: Install DevTools
+      shell: yum -y groupinstall 'Development Tools'
+
+    - name: Install Pip Mods
+      pip:
+        name: "{{ item }}"
+      with_items:
+        - pyzmq
+        - locustio

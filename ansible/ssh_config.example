@@ -1,0 +1,4 @@
+Host locust-master
+  User ###UserName###
+  HostName ###HostName###
+  IdentityFile ###SSH_KEY_PATH###
