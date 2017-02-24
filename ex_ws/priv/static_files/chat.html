@@ -33,7 +33,7 @@
         if (!window["WebSocket"]) {
           alert("エラー: WebSocketに対応していないブラウザです。")
         } else {
-          socket = new WebSocket("ws://localhost:4000/websocket");
+          socket = new WebSocket("ws://localhost:4000/websocket/room1");
           socket.onmessage = function(e) {
             messages.append($("<li>").text(e.data));
           }

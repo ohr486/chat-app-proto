@@ -18,7 +18,8 @@ defmodule Chat.Application do
   def run do
     routes = [
       {"/", Chat.HelloHandler, []},
-      {"/websocket", Chat.WebSocketHandler, []},
+      {"/rooms/:room_id/join", Chat.RoomJoinHandler, []},
+      {"/websocket/:room_id", Chat.WebSocketHandler, []},
       {"/static/[...]", :cowboy_static, {:priv_dir, :chat, "static_files"}}
     ]
     dispatch = :cowboy_router.compile([{:_, routes}])
