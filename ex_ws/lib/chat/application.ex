@@ -23,8 +23,13 @@ defmodule Chat.Application do
       {"/static/[...]", :cowboy_static, {:priv_dir, :chat, "static_files"}}
     ]
     dispatch = :cowboy_router.compile([{:_, routes}])
-    opts = [{:port, 4000}]
+    opts = [{:port, app_port()}]
     env = %{dispatch: dispatch}
     {:ok, _pid} = :cowboy.start_clear(:http, 100, opts, %{env: env})
+  end
+
+  def app_port do
+    port_env = "APP_PORT" |> System.get_env || "4000"
+    port_env |> String.to_integer
   end
 end
